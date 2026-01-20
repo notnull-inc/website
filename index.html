@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notnull</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --bg: #fafaf8;
+                --grid: #e8e8e4;
+                --text: #1a1a1a;
+                --text-muted: #888;
+                --red: #de3232;
+            }
+
+            html {
+                height: 100%;
+                min-height: 600px;
+            }
+
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                font-family: "IBM Plex Mono", monospace;
+                font-size: 14px;
+                line-height: 24px;
+                background-color: #fdfdfd;
+                background-image:
+                    linear-gradient(#f4f5f6 1px, transparent 1px),
+                    linear-gradient(90deg, #f4f5f6 1px, transparent 1px);
+                background-size: 12px 12px;
+                background-position: 6px 6px;
+                background-attachment: fixed;
+                color: var(--text);
+            }
+
+            main {
+                flex: 1;
+                max-width: 600px;
+                margin: 0;
+                padding: 126px 42px 100px 42px;
+            }
+
+            @media (min-width: 768px) {
+                main {
+                    padding: 126px 54px 100px 198px;
+                }
+            }
+
+            .logo {
+                height: 48px;
+                margin-bottom: 42px;
+                opacity: 0;
+                animation: fadeIn 0.6s ease forwards;
+            }
+
+            .logo svg {
+                height: 48px;
+                width: auto;
+            }
+
+            .description {
+                font-size: 14px;
+                line-height: 24px;
+                color: var(--text-muted);
+                max-width: 384px;
+                margin-bottom: 48px;
+                opacity: 0;
+                animation: fadeIn 0.6s ease 0.1s forwards;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-8px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .products {
+                display: flex;
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .product {
+                opacity: 0;
+                animation: fadeIn 0.6s ease forwards;
+            }
+
+            .product:nth-child(1) {
+                animation-delay: 0.15s;
+            }
+            .product:nth-child(2) {
+                animation-delay: 0.25s;
+            }
+
+            .product a {
+                font-size: 14px;
+                line-height: 24px;
+                color: var(--text);
+                text-decoration: none;
+                display: block;
+            }
+
+            .product .name {
+                display: inline-block;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s ease;
+            }
+
+            .product a:hover .name {
+                border-bottom-color: var(--text);
+            }
+
+            .product .arrow {
+                display: inline-block;
+                margin-left: 4px;
+                transition: transform 0.2s ease;
+            }
+
+            .product a:hover .arrow {
+                transform: translateX(3px);
+            }
+
+            .product .desc {
+                font-size: 14px;
+                line-height: 24px;
+                color: var(--text-muted);
+            }
+
+            footer {
+                padding: 0 42px 38px 42px;
+                font-size: 12px;
+                line-height: 24px;
+                color: var(--text-muted);
+                opacity: 0;
+                animation: fadeIn 0.6s ease 0.4s forwards;
+            }
+
+            @media (min-width: 768px) {
+                footer {
+                    padding-left: 198px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="logo">
+                <svg
+                    viewBox="0 0 351 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M0.600001 0.399997H14.2L51.2 58.6V0.399997H64.7V83H51.1L14.1 24.7V83H0.600001V0.399997ZM101.318 84C94.9846 84 89.6513 82.8333 85.318 80.5C81.0513 78.1 77.8513 74.7 75.718 70.3C73.5846 65.8333 72.518 60.5333 72.518 54.4V46.6C72.518 40.4 73.5846 35.1 75.718 30.7C77.8513 26.3 81.0513 22.9333 85.318 20.6C89.6513 18.2 94.9846 17 101.318 17C107.651 17 112.951 18.2 117.218 20.6C121.551 22.9333 124.785 26.3 126.918 30.7C129.051 35.1 130.118 40.4 130.118 46.6V54.4C130.118 60.5333 129.051 65.8333 126.918 70.3C124.785 74.7 121.551 78.1 117.218 80.5C112.951 82.8333 107.651 84 101.318 84ZM101.318 72.4C106.585 72.4 110.385 70.9667 112.718 68.1C115.118 65.1667 116.318 60.9667 116.318 55.5V45.5C116.318 41.9667 115.785 38.9667 114.718 36.5C113.718 33.9667 112.118 32.0333 109.918 30.7C107.718 29.3 104.851 28.6 101.318 28.6C96.118 28.6 92.318 30.0667 89.918 33C87.5846 35.9333 86.418 40.1 86.418 45.5V55.5C86.418 59.1 86.918 62.1667 87.918 64.7C88.918 67.1667 90.518 69.0667 92.718 70.4C94.918 71.7333 97.7846 72.4 101.318 72.4ZM178.066 29.7H159.266V61.5V62.3C159.266 64.7667 159.466 66.6333 159.866 67.9C160.333 69.1 161.033 69.9667 161.966 70.5C162.9 71.0333 164.2 71.3 165.866 71.3H178.066V83H162.366C158.1 83 154.733 82.3 152.266 80.9C149.866 79.4333 148.2 77.3667 147.266 74.7C146.333 72.0333 145.866 68.5 145.866 64.1V29.7H130.966V18H137.166C139.833 17.8 141.9 17 143.366 15.6C144.9 14.2 145.966 12.2667 146.566 9.79999C147.166 7.33333 147.466 4.2 147.466 0.399997H160.866C160.866 3.6 160.633 6.43333 160.166 8.89999C159.7 11.3 158.966 13.3333 157.966 15C156.966 16.6 155.666 17.6 154.066 18H178.066V29.7ZM198.827 83H185.327V18H198.827V83ZM198.027 29.4C199.96 25.7333 202.627 22.7667 206.027 20.5C209.493 18.1667 213.727 17 218.727 17C223.26 17 227.093 18.0333 230.227 20.1C233.427 22.1 235.86 24.9333 237.527 28.6C239.193 32.2667 240.027 36.6667 240.027 41.8V83H226.427V43.3C226.427 38.4333 225.36 34.7667 223.227 32.3C221.093 29.8333 217.827 28.6 213.427 28.6C209.627 28.6 206.66 29.4333 204.527 31.1C202.393 32.7 200.893 34.6667 200.027 37C199.227 39.2667 198.827 41.6 198.827 44L198.027 29.4ZM290.014 18H303.614V83H290.014V18ZM290.814 71.6C288.881 75.2667 286.181 78.2667 282.714 80.6C279.314 82.8667 275.114 84 270.114 84C265.581 84 261.714 83 258.514 81C255.381 78.9333 252.981 76.0667 251.314 72.4C249.647 68.7333 248.814 64.3333 248.814 59.2V18H262.414V57.7C262.414 62.5667 263.481 66.2333 265.614 68.7C267.747 71.1667 271.014 72.4 275.414 72.4C279.214 72.4 282.181 71.6 284.314 70C286.447 68.3333 287.914 66.3667 288.714 64.1C289.581 61.7667 290.014 59.4 290.014 57L290.814 71.6ZM327.202 0.399997V83H313.702V0.399997H327.202ZM350.862 0.399997V83H337.362V0.399997H350.862Z"
+                        fill="#DE3232"
+                    />
+                </svg>
+            </div>
+
+            <p class="description">reimagining financial software.</p>
+
+            <nav class="products">
+                <div class="product">
+                    <a
+                        href="https://bankpdf.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span class="name">bankpdf.com</span>
+                        <span class="arrow">→</span>
+                        <p class="desc">any bank statement pdf to excel</p>
+                    </a>
+                </div>
+                <div class="product">
+                    <a
+                        href="https://revis.pt"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span class="name">revis.pt</span>
+                        <span class="arrow">→</span>
+                        <p class="desc">
+                            contract price adjustment, made simple
+                        </p>
+                    </a>
+                </div>
+            </nav>
+        </main>
+
+        <footer>Notnull, Lda • PT510818250</footer>
+    </body>
+</html>
